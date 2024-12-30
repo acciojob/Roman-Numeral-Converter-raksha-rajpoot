@@ -16,20 +16,20 @@ function convertToRoman(num) {
     for (let key in obj) {
         const [symbol, value] = obj[key];
 
-        // while (num >= value) {
-        //     roman += symbol; 
-        //     num -= value;   
-        // }
-
-        if (key % 2 === 0 && key < 6) { 
-            const nextSymbol = obj[parseInt(key) + 2][0]; 
-            const nextValue = obj[parseInt(key) + 2][1]; 
-
-            if (num >= value - nextValue) {
-                roman += nextSymbol + symbol;
-                num -= (value - nextValue);   
-            }
+        while (num >= value) {
+            roman += symbol; 
+            num -= value;   
         }
+
+        // if (key % 2 === 0 && key < 6) { 
+        //     const nextSymbol = obj[parseInt(key) + 2][0]; 
+        //     const nextValue = obj[parseInt(key) + 2][1]; 
+
+        //     if (num >= value - nextValue) {
+        //         roman += nextSymbol + symbol;
+        //         num -= (value - nextValue);   
+        //     }
+        // }
     }
 
     return roman;
