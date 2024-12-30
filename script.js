@@ -1,4 +1,7 @@
 function convertToRoman(num) {
+	 if (num < 0 || num > 100000) {
+    throw new Error("Input out of range. Please input a number between 0 and 100000.");
+  }
   	const obj = {
       0:['M',1000], 
       1:['D', 500], 
@@ -10,28 +13,38 @@ function convertToRoman(num) {
     };
  
   //your code here
- let roman = "";
+ // let roman = "";
 
-    for (let key in obj) {
-        const [symbol, value] = obj[key];
+ //    for (let key in obj) {
+ //        const [symbol, value] = obj[key];
 
-        while (num >= value) {
-            roman += symbol; 
-            num -= value;   
-        }
+ //        while (num >= value) {
+ //            roman += symbol; 
+ //            num -= value;   
+ //        }
 
-        if (key % 2 === 0 && key < 6) { 
-            const nextSymbol = obj[parseInt(key) + 2][0]; 
-            const nextValue = obj[parseInt(key) + 2][1]; 
+ //        if (key % 2 === 0 && key < 6) { 
+ //            const nextSymbol = obj[parseInt(key) + 2][0]; 
+ //            const nextValue = obj[parseInt(key) + 2][1]; 
 
-            if (num >= value - nextValue) {
-                roman += nextSymbol + symbol;
-                num -= (value - nextValue);   
-            }
-        }
+ //            if (num >= value - nextValue) {
+ //                roman += nextSymbol + symbol;
+ //                num -= (value - nextValue);   
+ //            }
+ //        }
+ //    }
+
+ //    return roman;
+	 let roman = '';
+  
+  for (const [symbol, value] of romanSymbols) {
+    while (num >= value) {
+      roman += symbol;
+      num -= value;
     }
-
-    return roman;
+  }
+  
+  return roman;
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
